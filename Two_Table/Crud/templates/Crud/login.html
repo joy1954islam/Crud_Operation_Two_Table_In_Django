@@ -1,0 +1,47 @@
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'Crud/css/style.css' %}"/>
+
+ {% block content %}
+<body>
+	<div class="limiter">
+		<div class="container-table100">
+
+			<div class="wrap-table100">
+				<div class="table100">
+                    <h1 align="center">LOGIN</h1>
+					 <form method="POST" class="form-horizontal" action="../login/"> {% csrf_token %}
+					<table>
+                        <div class="input-group">
+							<label>Username</label>
+							<input type="text" name="username" >
+						</div>
+						<div class="input-group">
+							<label>Password</label>
+							<input type="password" name="password">
+						</div>
+						<div class="input-group">
+							<button type="submit" class="btn" name="login_user">Login</button>
+						</div>
+					</table>
+						 {% if messages %}
+						<ul class="messages">
+						{% for message in messages %}
+						<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+							{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} {% endif %}
+							{{ message }}
+						</li>
+						{% endfor %}
+						</ul>
+			{% endif %}
+					 </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+ {% endblock %}
+
+
+

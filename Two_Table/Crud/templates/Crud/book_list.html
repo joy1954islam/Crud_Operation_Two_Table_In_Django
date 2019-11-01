@@ -1,0 +1,18 @@
+{% include "Crud/SuperAdminNavbar.html" %}
+
+{% block content %}
+
+<h2><a href="{% url 'Crud:Ministry_list' %}"> Ministry</a></h2>
+
+<ul>
+    {% for ministry in object_list %}
+    <li>{{ ministry.MinistryName }}  {{ ministry.HonorableMinisterName }} {{ministry.Address }} {{ministry.Phone}} {{ministry.Email}}
+    <a href="{% url 'Crud:Ministry_edit' ministry.id %}">edit</a>
+    <a href="{% url 'Crud:Ministry_delete' ministry.id %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'Crud:Ministry_new' %}">New</a>
+
+{% endblock %}
